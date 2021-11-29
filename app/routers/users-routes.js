@@ -3,8 +3,14 @@
 const express = require("express");
 const router = express.Router();
 const registerUser = require("../controllers/users/register-user-controller");
-
+const loginUser = require("../controllers/users/login-user");
+const getUser = require("../controllers/users/get-users")
+const validateAuth = require("../midlewares/validate-auth")
 router.route("/").post(registerUser);
+router.route("/activation").get(validateUser);
+router.route("/login").post(loginUser);
+
+router.route("/").all(validateAuth).get(getUser);
 
 module.exports = router;
 

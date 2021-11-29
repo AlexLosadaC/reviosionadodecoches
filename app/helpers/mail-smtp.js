@@ -14,7 +14,6 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendMailRegister(name, email, code) {
-  //generar link de activacion para
   const linkActivation =
     "http://localhost:3000/api/v1/users/activation?code=${code}";
   const mailData = {
