@@ -19,15 +19,31 @@ const cars = [
   },
 ];
 
-function findAllCars() {
-  //const sql=SELECT * FROM car;
+async function findAllCars() {
+  const pool = await getPool();
+  const sql = "SELECT * FROM cars";
+  const [cars] = await pool.query(sql);
   return cars;
 }
-
-function findCarById(id) {
-  return cars.find((car) => car.id === +id);
+async function findCarById(id) {
+  const pool = await getPool();
+  const sql = "SELECT * FROM cars WHERE id = ?";
+  const [car] = await pool.query(sql, id);
+  //const sql2 = 'SELECT * FROM cars WHERE model = ? AND brand = ?';
+  // await pool.query(sql, [model1, model2]);
+  return car[0];
 }
+
+async function addImageByCarId(idCar, imageCar) {
+  const pool = await getPool();
+  const now = new Date();
+  const sql = ` INSERT INTO carImages(name, principal, idCar) VALUES (?, ?, ?)`;
+  const [cars] = await pool.query(sql, [imageCar, 0, idCar]);
+  return true;
+}
+
 module.exports = {
   findAllCars,
   findCarById,
+  addImageByCarId,
 };

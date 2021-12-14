@@ -2,16 +2,22 @@
 
 const express = require("express");
 const router = express.Router();
-const registerUser = require("../controllers/users/register-user-controller");
+//const registerUser = require("../controllers/users/register-user-controller");
 const loginUser = require("../controllers/users/login-user");
-const getUser = require("../controllers/users/get-users")
-const validateAuth = require("../midlewares/validate-auth")
+const getUser = require("../controllers/users/get-users");
+const getUserProfile = require("../controllers/users/get-user-profile-controller");
+const validateAuth = require("../midlewares/validate-auth");
+const deleteUserById = require("../controllers/users/delete-user-by-id");
+const uploadimageProfile = require("../controllers/users(upload-image-profile-controller");
+
 router.route("/").post(registerUser);
 router.route("/activation").get(validateUser);
 router.route("/login").post(loginUser);
 
 router.route("/").all(validateAuth).get(getUser);
-
+router.route("/:id").all(validateAuth).delete(deleteUserById);
+router.route("/profile").all(validateAuth).get(getUserProfile);
+router.route("/upload").all(validateaut).post(uploadimageProfile);
 module.exports = router;
 
 //endpoint Públicos
