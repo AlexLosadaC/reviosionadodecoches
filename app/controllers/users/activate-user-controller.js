@@ -3,7 +3,7 @@ const createJsonError = require('../../errors/create-json-error');
 const throwJsonError = require('../../errors/throw-json-error');
 const { sendMailCorrectValidation } = require('../../helpers/mail-smtp');
 const { activateUser, getUserByVerificationCode } = require('../../repositories/users-repository');
-
+//api/v1/users/activation?code=ad;fadfasdf
 async function validateUser(req, res) {
   try {
     const { code } = req.query;

@@ -8,7 +8,6 @@ async function getTitularesElPais(req, res) {
     const url = "https://elpais.com";
     const requestHtml = await getHtmlContent(url);
 
-
     const html = requestHtml.data;
 
     const selector = cheerio.load(html);

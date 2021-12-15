@@ -6,7 +6,7 @@ const { findCarById } = require('../../repositories/cars-repository');
 async function getCarById(req, res) {
   try {
     const { id } = req.params;
-    //Si id es un numero
+
     const car = await findCarById(id);
     if (car.length === 0) {
       throwJsonError(400, 'Parámetro no válido');

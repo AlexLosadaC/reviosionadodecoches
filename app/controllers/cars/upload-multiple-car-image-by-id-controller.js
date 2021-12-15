@@ -14,13 +14,14 @@ const schema = Joi.number().positive().integer().required();
 async function uploadMutipleCarImages(req, res) {
   try {
     const { carId } = req.params;
-
+    //Validamos del carId
     await schema.validateAsync(carId);
-
+    // Obtenemos el id del JWT
     const { role } = req.auth;
-
+    // Validamos que sea adminstador para subir imagenes
     isAdmin(role);
-
+    // Las imagenes vienen dentro de la cabecera req en el objeto files
+    // Comprobamos q existe alguna imagen
     const { files } = req;
     if (!files || Object.keys(files).length === 0) {
       throwJsonError(400, 'No se ha seleccionado ningún fichero');

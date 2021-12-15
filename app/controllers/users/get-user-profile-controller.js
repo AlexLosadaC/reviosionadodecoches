@@ -7,7 +7,7 @@ const { HTTP_SERVER_DOMAIN, PATH_USER_IMAGE } = process.env;
 
 async function getUserProfile(req, res) {
   try {
-
+    // Recogemos el Id del accessToken así no usamos ni tenemos que fiarnos de la URL
     const { id } = req.auth;
     const user = await findUserById(id);
     const { name, email, role, createdAt } = user;

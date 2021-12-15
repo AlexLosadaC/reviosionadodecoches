@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function throwJsonError(status, message) {
   const error = new Error(message);

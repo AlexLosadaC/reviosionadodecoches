@@ -15,14 +15,16 @@ const schemaPrincipal = Joi.boolean();
 async function uploadCarImageById(req, res) {
   try {
     const { carId } = req.params;
-
+    // Validamos del carId
     await schema.validateAsync(carId);
-
+    // Obtenemos el role del usuario
     const { role } = req.auth;
-
+    // Chequeamos si el usuario es Administrador
     isAdmin(role);
 
-
+    // Al subir una imagen tenemos un campo 'principal' true/false
+    // para indicar si la imagen es la imagen que se mostrará como
+    // imagen principal del coche
     const { body } = req;
     const { principal } = body;
     await schemaPrincipal.validateAsync(principal);

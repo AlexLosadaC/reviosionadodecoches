@@ -15,7 +15,6 @@ async function deleteUserById(req, res) {
 
     isAdmin(role);
 
-
     const { id } = req.params;
     await schema.validateAsync(id);
 

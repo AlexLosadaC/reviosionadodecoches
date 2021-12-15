@@ -17,12 +17,12 @@ const cars = [{
 }];
 
 function findAllCars() {
-  //const sql='SELECT * FROM cars';
+  const sql = 'SELECT * FROM cars';
   return cars;
 }
 
 function findCarById(id) {
-  // const sql = 'SELECT * FROM cars WHERE id = id';
+  const sql = 'SELECT * FROM cars WHERE id = id';
   return cars.find(car => car.id === +id);
 }
 

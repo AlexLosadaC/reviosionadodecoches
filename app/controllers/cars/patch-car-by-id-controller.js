@@ -12,7 +12,7 @@ const {
 
 const schemaId = Joi.number().positive().required();
 
-
+// La diferencia con el PUT es que aki ningún campo es obligatorio
 const schema = Joi.object().keys({
   brand: Joi.string().alphanum().min(3).max(20),
   model: Joi.string().alphanum().min(2).max(220),
@@ -32,6 +32,8 @@ async function patchCarById(req, res) {
 
     await schemaId.validateAsync(carId);
 
+
+    const { role } = req.auth;
 
     isAdmin(role);
 

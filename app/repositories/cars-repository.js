@@ -24,11 +24,6 @@ async function addCar(car) {
     now,
   ]);
 
-  // const [created] = await pool.query(consulta, [
-  //   ...Object.values(car),
-  //   now
-  // ]);
-
   return created.insertId;
 }
 

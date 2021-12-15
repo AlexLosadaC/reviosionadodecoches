@@ -46,6 +46,7 @@ async function updateCarById(req, res) {
 
     await schema.validateAsync(body);
 
+
     await updateCar(carId, body);
 
 

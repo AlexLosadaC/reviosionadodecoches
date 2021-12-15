@@ -49,8 +49,6 @@ async function uploadImageProfile(req, res) {
     const imageName = `${id}-${random}${extension}`;
 
     const pathImage = `${pathProfileImageFolder}/${imageName}`;
-    //const pathImage = `${pathProfileImageFolder}/${id}${extension}`;
-
 
     profileImage.mv(pathImage, async function (err) {
       if (err) return res.status(500).send(err);

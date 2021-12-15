@@ -5,7 +5,9 @@ const createJsonError = require('../errors/create-json-error');
 
 async function nombreFuncion(req, res) {
   try {
-
+    //VALIDACION PARAMETROS ENTRADA
+    //LLAMADA BASE DATOS
+    // VALIDAR RESULTADO
     res.send();
   } catch (error) {
     createJsonError(error, res);
