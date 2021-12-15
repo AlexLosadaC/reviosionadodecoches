@@ -1,22 +1,23 @@
-"use strict";
+'use strict';
+const Joi = require('joi');
+const bcrypt = require('bcryptjs');
+const randomstring = require('randomstring');
 
-const bcrypt = require("bcryptjs");
-//const cryptoRandomString = require("crypto-random-string");
-const randomstring = require("randomstring");
-const Joi = require("joi");
-const createJsonError = require("../../errors/create-json-errors");
-const throwJsonError = require("../../errors/throw-json-error");
-const sendMailRegister = require("../../helpers/mail-smtp");
+const createJsonError = require('../../errors/create-json-error');
+const throwJsonError = require('../../errors/throw-json-error.js');
 const {
   createUser,
   findUserByEmail,
-} = require("../../repositories/users-repository");
-const { sendMailRegister } = require("../../helpers/mail-smtp");
-const schema = Joi.objects().keys({
-  name: Joi.string().min(4).max(20).required(),
+} = require('../../repositories/users-repository');
+const { sendMailRegister } = require('../../helpers/mail-smtp');
+
+const { HTTP_SERVER_DOMAIN } = process.env;
+
+const schema = Joi.object().keys({
+  name: Joi.string().min(4).max(120).required(),
   email: Joi.string().email().required(),
   password: Joi.string().min(4).max(20).required(),
-  verifyPassword: Joi.ref("password"),
+  verifyPassword: Joi.ref('password'),
 });
 
 async function registerUser(req, res) {
@@ -26,31 +27,31 @@ async function registerUser(req, res) {
     const { name, email, password } = body;
     const user = await findUserByEmail(email);
     if (user) {
-      // const error = new Error("Ya existe un usuario con ese email");
-      // error.status = 400;
-      // throw error;
-      throwJsonError(400, "ya existe un usuario con ese email");
+
+      throwJsonError(409, 'Ya existe un usuario con ese email');
     }
 
-    //crear el hash del password
     const passwordHash = await bcrypt.hash(password, 12);
-    //crear el verificationCode
+
     const verificationCode = randomstring.generate(64);
-    //crear Object user con los campos
-    const userDB = { name, enail, passwordHash, verificationCode };
-    //llamamos a la base de datos - createUser
+
+    const userDB = { name, email, passwordHash, verificationCode };
+
     const userId = await createUser(userDB);
-    //enviar mail de verificacion de cuenta
-    // console.log(
-    //   `http://localhost:3000/api/vi/users/activation?code=${verificationCode}`
-    // );
-    await sendMailRegister(name, email);
+
+    await sendMailRegister(name, email, verificationCode);
+
+
+    const activationLink = `${HTTP_SERVER_DOMAIN}/api/v1/users/activation?code=${verificationCode}`;
+
     res.status(201);
-    res.send({ id: userId });
+
+    res.send({
+      id: userId,
+    });
   } catch (error) {
     createJsonError(error, res);
   }
 }
-module.exports = registerUser;
 
-//hackaboss5@dsoutoweb.com - U79_)J?NYxRCC?P
+module.exports = registerUser;

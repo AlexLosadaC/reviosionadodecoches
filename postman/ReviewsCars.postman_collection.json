@@ -1,0 +1,757 @@
+{
+	"info": {
+		"_postman_id": "d6fed8f1-b8fd-46a9-b25c-67c8908e8f9a",
+		"name": "ReviewsCars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Brands",
+			"item": [
+				{
+					"name": "Get Brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/brands",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Create Car",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"BMW\",\n    \"model\": \"Serie 1\",\n    \"year\": 2018,\n    \"engine\": \"Gasolina\",\n    \"cv\": 140\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Review By CarId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"Perfecto\",\n    \"rating\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/8/reviews",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"8",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Car By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/19",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Car By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/1",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Images By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/3/rating",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"3",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rating By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/3/rating",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"3",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Review By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"Un desastre de coche\",\n    \"rating\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/5/reviews",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"5",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Car By Id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"model\": \"A3\",\n    \"cv\": 120 \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/5",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Car By Id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Ford\",\n    \"model\": \"Mondeo\",\n    \"year\": 2019,\n    \"engine\": \"Gasolina\",\n    \"cv\": 140\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/1",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Car Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageCar",
+									"type": "file",
+									"src": "/Users/david/Downloads/astra-01.jpg"
+								},
+								{
+									"key": "principal",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/5/image",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"5",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Muliple Car Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageCar",
+									"type": "file",
+									"src": "/Users/david/Downloads/astra-01.jpg"
+								},
+								{
+									"key": "imageCar",
+									"type": "file",
+									"src": "/Users/david/Downloads/astra-02.jpg"
+								},
+								{
+									"key": "imageCar",
+									"type": "file",
+									"src": "/Users/david/Downloads/astra-03.jpg"
+								},
+								{
+									"key": "prueba",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/cars/6/images",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"6",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Random User From External API",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users/random",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"random"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Activate User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users/activation?code=xxxxxxxxx",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"activation"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "xxxxxxxxx"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users/profile",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login ADMIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin@hackaboss.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users/login",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.environment.set(\"accessToken\", response.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ddd@yopmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users/login",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Luis\",\n    \"email\": \"luiscarlos32@yopmail.com\",\n    \"password\": \"123456\",\n    \"verifyPassword\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pedro\",\n    \"email\": \"pedroyellobo@yopmail.com\",\n    \"password\": \"1234\",\n    \"repeatPassword\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users/profile",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Profile Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "/Users/david/data/www/hack-a-boss/JSB10C0/ejercicios-node/dia4/fs/tux.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{backendUrl}}/api/v1/users/upload",
+							"host": [
+								"{{backendUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Titulares",
+			"item": [
+				{
+					"name": "Titulares ElPais",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/titulares/elpais",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"titulares",
+								"elpais"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Titulares Marca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/titulares/marca",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"titulares",
+								"marca"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
