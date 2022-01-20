@@ -16,9 +16,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/davidsoutoc/reviews-cars/issues"
+    "url": "https://github.com/AlexLosadaC/revisionadodecoche/issues"
   },
-  "homepage": "https://github.com/davidsoutoc/reviews-cars#readme",
+  "homepage": "https://github.com/AlexLosadaC/revisionadodecoches#readme",
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
